@@ -1,6 +1,6 @@
 This project is a demonstration of a few well-known Design Patterns.
 
-Presently, contains the implementation of a Duck provider using the following:
+Presently, it contains the implementation of a Duck provider using the following:
 - Strategy Pattern
 - Builder Pattern
 - Factory pattern
