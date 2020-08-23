@@ -1,22 +1,23 @@
 package com.crimson_carniverse.knowledge_base.design_patterns;
 
 import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckProvider.getNewDuck;
-import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckTypes.CITY_DUCK;
-import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckTypes.CLOUD_DUCK;
-import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckTypes.RUBBER_DUCK;
+import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckType.CITY_DUCK;
+import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckType.CLOUD_DUCK;
+import static com.crimson_carniverse.knowledge_base.design_patterns.api.DuckType.RUBBER_DUCK;
 
-import com.crimson_carniverse.knowledge_base.design_patterns.models.Duck;
+import com.crimson_carniverse.knowledge_base.design_patterns.api.Duck;
+import com.crimson_carniverse.knowledge_base.design_patterns.models.DuckImpl;
 import com.crimson_carniverse.knowledge_base.design_patterns.strategies.display_strategies.GraphicalDisplay;
 import com.crimson_carniverse.knowledge_base.design_patterns.strategies.flying_strategies.JetFly;
 import com.crimson_carniverse.knowledge_base.design_patterns.strategies.quacking_strategies.DoubleQuack;
 
 public class Main {
 
-  public static void main(String[] args) throws ReflectiveOperationException {
-    Duck cityDuck1 = getNewDuck(CITY_DUCK);
-    Duck cityDuck2 = getNewDuck(CITY_DUCK);
-    Duck cloudDuck1 = getNewDuck(CLOUD_DUCK);
-    Duck rubberDuck1 = getNewDuck(RUBBER_DUCK);
+  public static void main(String[] args) {
+    com.crimson_carniverse.knowledge_base.design_patterns.api.Duck cityDuck1 = getNewDuck(CITY_DUCK);
+    com.crimson_carniverse.knowledge_base.design_patterns.api.Duck cityDuck2 = getNewDuck(CITY_DUCK);
+    com.crimson_carniverse.knowledge_base.design_patterns.api.Duck cloudDuck1 = getNewDuck(CLOUD_DUCK);
+    com.crimson_carniverse.knowledge_base.design_patterns.api.Duck rubberDuck1 = getNewDuck(RUBBER_DUCK);
 
     System.out.println("\nCity Duck 1:");
     printDuck(cityDuck1);
@@ -30,7 +31,7 @@ public class Main {
     System.out.println("\nRubber Duck 1:");
     printDuck(rubberDuck1);
 
-    Duck customDuck = Duck.builder()
+    Duck customDuck = DuckImpl.builder()
         .quackingStrategy(new DoubleQuack())
         .flyingStrategy(new JetFly())
         .displayStrategy(new GraphicalDisplay())
@@ -40,7 +41,7 @@ public class Main {
     printDuck(customDuck);
   }
 
-  private static void printDuck(Duck duck) {
+  private static void printDuck(com.crimson_carniverse.knowledge_base.design_patterns.api.Duck duck) {
     duck.display();
     duck.fly();
     duck.quack();

@@ -1,6 +1,6 @@
 package com.crimson_carniverse.knowledge_base.design_patterns.factories;
 
-import com.crimson_carniverse.knowledge_base.design_patterns.models.Duck;
+import com.crimson_carniverse.knowledge_base.design_patterns.api.Duck;
 
 public interface DuckFactory {
   Duck getNewDuck();

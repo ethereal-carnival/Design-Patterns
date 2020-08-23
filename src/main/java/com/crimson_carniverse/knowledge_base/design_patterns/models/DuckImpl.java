@@ -4,7 +4,7 @@ import com.crimson_carniverse.knowledge_base.design_patterns.strategies.display_
 import com.crimson_carniverse.knowledge_base.design_patterns.strategies.flying_strategies.FlyingStrategy;
 import com.crimson_carniverse.knowledge_base.design_patterns.strategies.quacking_strategies.QuackingStrategy;
 
-public class Duck {
+public class DuckImpl implements com.crimson_carniverse.knowledge_base.design_patterns.api.Duck {
 
   private DisplayStrategy displayStrategy;
   private FlyingStrategy flyingStrategy;
@@ -24,14 +24,17 @@ public class Duck {
 
 
   // Duck methods
+  @Override
   public void display() {
     displayStrategy.display();
   }
 
+  @Override
   public void fly() {
     flyingStrategy.fly();
   }
 
+  @Override
   public void quack() {
     quackingStrategy.quack();
   }
@@ -45,10 +48,10 @@ public class Duck {
 
   public static class Builder {
 
-    private Duck duck;
+    private DuckImpl duck;
 
     private Builder() {
-      duck = new Duck();
+      duck = new DuckImpl();
     }
 
     public Builder flyingStrategy(FlyingStrategy flyingStrategy) {
@@ -66,7 +69,7 @@ public class Duck {
       return this;
     }
 
-    public Duck build() {
+    public DuckImpl build() {
       return this.duck;
     }
   }
